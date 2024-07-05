@@ -1,4 +1,3 @@
-
 <!--
 
 JavaScript Variable Scope
@@ -18,27 +17,27 @@ as a global variable, you effectively hide the global variable. Take a look into
 -->
 
 <html>
-   <body>   
-      <script type = "text/javascript">
-         <!--
-            var global = "global";      // Declare a global variable
-			
-			
-			function sayHello( ) 
-			{
-               var local = "local";    // Declare a local variable
-               document.write(local);
-			   document.write(global);
-            }
-			sayHello();
-			
-			
-			document.write(global);     // access all over page
-			document.write(local);	// local not access out of function
-         //-->
-      </script>     
-	  
-	 
-	  
-   </body>
+
+<body>
+   <script type="text/javascript">
+      var global = "global";      // Declare a global variable
+
+
+      function sayHello() {
+         var local = "local";    // Declare a local variable
+         document.write(local);
+         document.write(global);
+      }
+      sayHello();
+
+
+      document.write(global);     // access all over page
+      document.write(local);	// local not access out of function
+      //-->
+   </script>
+
+
+
+</body>
+
 </html>

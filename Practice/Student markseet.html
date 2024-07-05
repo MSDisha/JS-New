@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            border: none;
+            outline: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" onsubmit="return result()">
+        Enter Student Name: <input type="text" name="" id="fname1" oninput="main()">
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td colspan="4">Student Name: <span id="fname2"></span></td>
+            </tr>
+            <tr>
+                <td>SUBJECTS</td>
+                <td>SESSIONAL(30)</td>
+                <td>FINAL(70)</td>
+                <td>TOTAL</td>
+            </tr>
+            <tr>
+                <td>MATHS</td>
+                <td><input type="text"  id="one" max="30" pattern="[0-9]{1,}"></td>
+                <td><input type="text"  id="two" max="70" pattern="[0-9]{1,}"></td>
+                <td><span id="sub1"></span></td>
+            </tr>
+            <tr>
+                <td>SCIENCE</td>
+                <td><input type="text"  id="three" max="30" pattern="[0-9]{1,}"></td>
+                <td><input type="text" id="four" max="70" pattern="[0-9]{1,}"></td>
+                <td><span id="sub2"></span></td>
+            </tr>
+            <tr>
+                <td>ENGLISH</td>
+                <td><input type="text" id="five" max="30" pattern="[0-9]{1,}"></td>
+                <td><input type="text" id="six" max="70" pattern="[0-9]{1,}"></td>
+                <td><span id="sub3"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2">Total Marks : </td>
+                <th colspan="2"><span id="total"></span></th>
+            </tr>
+            <tr>
+                <td colspan="2">Total Percentage : </td>
+                <th  colspan="2"><span id="per"></span></th>
+            </tr>
+            <tr>
+                <td colspan="2">PASS or FAIL : </td>
+                <th colspan="2"><span id="res"></span></th>
+            </tr>
+            <tr>
+                <td colspan="2">Grade : </td>
+                <td colspan="2"><span id="grade"></span></td>
+
+            </tr>
+            <tr>
+                <td colspan="2"><button><input type="submit" ></button></td>
+
+
+                <td colspan="2"><button onclick="print()">Print</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function main() {
+            let a = document.getElementById("fname1").value;
+            document.getElementById("fname2").innerHTML = a
+        }
+
+        function result() {
+            let b = document.getElementById("one").value;
+            let c = document.getElementById("two").value;
+            let d = document.getElementById("three").value;
+            let e = document.getElementById("four").value;
+            let f = document.getElementById("five").value;
+            let g = document.getElementById("six").value;
+
+            let tot1 = document.getElementById("sub1").innerHTML = Number(b) + Number(c);
+            let tot2 = document.getElementById("sub2").innerHTML = Number(d) + Number(e);
+            let tot3 = document.getElementById("sub3").innerHTML = Number(f) + Number(g);
+
+            let finaltot = document.getElementById("total").innerHTML = tot1 + tot2 + tot3;
+
+            let percentage = finaltot/300*100;
+
+            document.getElementById("per").innerHTML = percentage + "%";
+
+            if(percentage > 40){
+                document.getElementById("res").innerHTML= "PASS"
+                document.getElementById("res").style.color= "green"
+                
+            }
+            else{
+                document.getElementById("res").innerHTML = "FAIL"
+                document.getElementById("res").style.color = "red"
+              
+            }
+
+            
+        }
+    </script>
+</body>
+
+</html>

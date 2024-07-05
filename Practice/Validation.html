@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="myForm" action="" method="post" onsubmit="return validate()">
+        <table border="2" align="center">
+            <tr>
+                <th>Registration page</th>
+            </tr>
+            <tr>
+                <th>User First Name: </th>
+                <td><input type="text" id="ufn" name="ufn"></td>
+            </tr>
+            <tr>
+                <th>User Last Name: </th>
+                <td><input type="text" name="un">
+                    <span style="color:red" id="uln"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>Password:-</th>
+                <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+                <th>Confirm Password:-</th>
+                <td><input type="password" name="cpass"></td>
+            </tr>
+            <tr>
+                <th>Email Address:-</th>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <th>Phone No:-</th>
+                <td><input type="text" name="pno"></td>
+            </tr>
+
+            <tr>
+                <th>Hobby</th>
+                <td>
+                    Reading <input type="checkbox" name="chk" value="Reading">
+                    Music <input type="checkbox" name="chk" value="music">
+                    Outing <input type="checkbox" name="chk" value="outing">
+                    Cricket <input type="checkbox" name="chk" value="criket">
+                </td>
+            </tr>
+
+            <tr>
+                <th>Gender</th>
+                <td>
+                    Male <input type="radio" name="gender" value="m">
+                    Female <input type="radio" name="gender" value="f">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit"></td>
+            </tr>
+        </table>
+    </form>
+    <br><br>
+    <script>
+        function validate() {
+
+            //Method 1
+            var ufn = document.forms['myForm']['ufn'].value
+            if (ufn == "" || ufn == null) {
+                alert("first name is required")
+                return false;
+            }
+            //                      /^[]$/
+            //alpha=/^[A-Za-z]+$/
+            //var phone=/^[0-9]{10,11}$/;
+            //var mail=/^[a-zA-Z0-9_]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/;
+
+
+
+            //Method 2
+            var un = document.forms['myForm']['un'].value;
+            if (un == "" || un == null) {
+                document.getElementById("uln").innerHTML = "last name is required"
+                return false;
+            }
+            else {
+                document.getElementById("uln").innerHTML = ""
+            }
+
+            var pass = document.forms['myForm']['pass'].value;
+            if (pass == "" || pass == null) {
+                alert('Please fill out the pass');
+                return false;
+            }
+            if (!(pass.length >= 3 && pass.length <= 8)) {
+                alert('Please,provide min 3 & max 8 char in pass');
+                return false;
+            }
+            var cpass = document.forms['myForm']['cpass'].value;
+            if (cpass == "" || cpass == null) {
+                alert('Please fill out the cpass');
+                return false;
+            }
+            if (pass == cpass) {
+
+            }
+            else {
+                alert('Please Enter Same password');  // alert msg
+                return false;
+            }
+            var email = document.forms["myForm"]["email"].value;
+            if (email == "" || email == null)  // for null condition
+            {
+                alert('Please fill out the email');  // alert msg
+                return false;
+            }
+
+            var mail = /^[a-zA-Z0-9_]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/;
+            if (!mail.test(email)) {
+                alert('Please fill proper email id');  // alert msg
+                return false;
+
+            }
+            var pno = document.forms["myForm"]["pno"].value;
+            if (pno == "" || pno == null)  // for null condition
+            {
+                alert('Please fill out the pno');  // alert msg
+                return false;
+            }
+
+            var phone = /^[0-9]{10,11}$/;
+            if (!phone.test(pno)) {
+                alert('Please fill only digits in numbers');  // alert msg
+                return false;
+            }
+            //For radio selection
+            var gen_arr = document.getElementsByName("gender");
+            if (gen_arr[0].checked == true) {
+
+            }
+            else if (gen_arr[1].checked == true) {
+
+            }
+            else {
+                alert('! Please Select Gender');  // alert msg
+                return false;
+            }
+
+            var chk_arr = document.getElementsByName("chk");
+            if (chk_arr[0].checked == true) {
+
+            }
+            else if (chk_arr[1].checked == true) {
+
+            }
+            else if (chk_arr[2].checked == true) {
+
+            }
+            else if (chk_arr[3].checked == true) {
+
+            }
+            else {
+                alert('! Please Select any one Hobby ');  // alert msg
+                return false;
+            }
+
+        }
+    </script>
+
+
+    <hr>
+    <h4 align="center" style="color:red" id="msg"></h4>
+    <form action="" method="post" onsubmit="return validate1(this)">
+        <table border="2" align="center">
+            <tr>
+                <th> Registration Page </th>
+            </tr>
+            <tr>
+                <th>User Name:-</th>
+                <td>
+                    <input type="text" id="username" name="username">
+                </td>
+            </tr>
+
+            <tr>
+                <th>password:-</th>
+                <td>
+                    <input type="text" name="pass" id="password">
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" name="submit" /></td>
+
+            </tr>
+
+
+        </table>
+
+    </form>
+    <script>
+        //method 3
+        function validate1(argu) {
+            if (argu.username.value == "") {
+                document.getElementById("msg").innerHTML = "Username field is required";
+                argu.username.focus();
+                return false;
+            }
+            if (argu.password.value == "") {
+                document.getElementById("msg").innerHTML = "Passwrod field is required";
+                argu.password.focus();
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
